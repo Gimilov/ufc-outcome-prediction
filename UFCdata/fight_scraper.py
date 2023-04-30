@@ -30,7 +30,7 @@ final_data = []
 counter = 0 # SET A COUNTER TO TRACK THE PROGRESS IN THE COMMANDLINE
 timer = Timer.Timer()
 
-for event_link in links[-20:]: 
+for event_link in links[-5:]: 
     counter += 1
     print(f'ITERATION: {str(counter).ljust(3)} / {len(links)}     ||     CURRENT ITERATION TIME: {timer.format_time(timer.checkpoint())} TOTAL TIME: {timer.format_time(timer.total_time_elapsed())}')
     
@@ -476,6 +476,30 @@ df = pd.DataFrame(final_data,
 
 df = df.sort_values('Event_Date', ascending=True).reset_index(drop=True)
 df = df.replace('--', pd.NA)
+
+# We'll also try to introduce some new variables. ----------------------------------------
+#--------------------------------------------------------------------------------------------------
+
+# 1. Underdog. This will signify if a fighter can be considered as an underdog for the fight.
+# It may impact fighter performance from the mental perspective where, potentially, a fighter may have a hard time recently.
+# We define it as having a losing streak of 2:
+R_streak = df['R_Losing_Streak'] > 2
+B_streak = df['B_Losing_Streak'] > 2
+
+i = 0
+underdog = []
+for i in range(len(R_streak)):
+    if (R_streak[i] == True) and (B_streak[i] == False):
+        underdog.append('Red')
+    elif (R_streak[i] == False) and (B_streak[i] == True):
+        underdog.append('Blue')
+    else:
+        underdog.append('No one')
+
+df['Underdog'] = underdog
+
+
+
 # saving to excel
 df.to_excel('UFCdata_final.xlsx')
 

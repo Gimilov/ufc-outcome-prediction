@@ -30,7 +30,7 @@ final_data = []
 counter = 0 # SET A COUNTER TO TRACK THE PROGRESS IN THE COMMANDLINE
 timer = Timer.Timer()
 
-for event_link in links[-5:]: 
+for event_link in links: 
     counter += 1
     print(f'ITERATION: {str(counter).ljust(3)} / {len(links)}     ||     CURRENT ITERATION TIME: {timer.format_time(timer.checkpoint())} TOTAL TIME: {timer.format_time(timer.total_time_elapsed())}')
     

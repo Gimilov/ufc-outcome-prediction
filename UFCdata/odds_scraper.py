@@ -7,7 +7,7 @@ import Timer
 base_url = "https://www.bestfightodds.com/search?query="
 
 # getting unique fighter names that we have
-ufc_data = pd.read_excel('UFCData.xlsx')
+ufc_data = pd.read_excel('UFCData_final.xlsx')
 unique_R_names = ufc_data['R_Name'].unique() # the other side will be accounted as well
 timer = Timer.Timer()
 counter = 0
@@ -156,7 +156,7 @@ if third_prompt == 'Y':
         df = pd.read_excel('ODDSdata.xlsx')
     pass
 
-    ufc_data['Event_Date'] = pd.to_datetime(ufc_data['Event_Date'], format = '%B %d %Y').dt.date
+    ufc_data['Event_Date'] = pd.to_datetime(ufc_data['Event_Date'], format = '%B %d, %Y').dt.date
     df['Event_Date'] = pd.to_datetime(df['Event_Date'].str.replace(r'st|nd|rd|th', '', regex=True), format='%b %d %Y').dt.date
     
     # setting NA as a default value for the column
@@ -203,7 +203,7 @@ if third_prompt == 'Y':
                 ufc_data.at[index, 'B_Open_Odds'] = R_Name_cond2['1_Open_Odds'].iloc[0]
                 ufc_data.at[index, 'B_Closing_Odds'] = R_Name_cond2['1_Closed_Odds'].iloc[0]
             
-    ufc_data.to_excel('test.xlsx')
+    ufc_data.to_excel('test_final.xlsx')
     
 else:    
     pass

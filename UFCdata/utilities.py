@@ -316,7 +316,7 @@ def update_fighters(fighter: str, colour: str, fighters_dict: dict, fighter_soup
     
     temp_head_landed = fighters_dict.get(fighter).get("Average Significant Strikes on Head Landed")
     temp_head_attempted = fighters_dict.get(fighter).get("Average Significant Strikes on Head Attempted")
-    fighters_dict.get(fighter)["Significant Strikes on Body % Landed"] = (temp_head_landed * no_of_fights) / (temp_head_attempted * no_of_fights) if temp_head_attempted > 0 and no_of_fights > 0 else 0 
+    fighters_dict.get(fighter)["Significant Strikes on Head % Landed"] = (temp_head_landed * no_of_fights) / (temp_head_attempted * no_of_fights) if temp_head_attempted > 0 and no_of_fights > 0 else 0 
     
     current = fighters_dict.get(fighter)["Average Significant Strikes on Body Attempted"]
     fighters_dict.get(fighter)["Average Significant Strikes on Body Attempted"] = ((current * (no_of_fights - 1)) + int(body_attempted)) / no_of_fights if body_attempted.isnumeric() and no_of_fights > 0 else current

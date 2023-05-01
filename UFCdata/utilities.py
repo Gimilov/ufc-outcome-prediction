@@ -406,7 +406,7 @@ def update_fighters(fighter: str, colour: str, fighters_dict: dict, fighter_soup
     
     temp_tot_landed = fighters_dict.get(fighter).get("Opp. Average Strikes Landed")
     temp_tot_attempted = fighters_dict.get(fighter).get("Opp. Average Strikes Attempted")
-    fighters_dict.get(fighter)["Opp. Total Strikes % Landed"] = (temp_tot_landed * no_of_fights) / (temp_tot_attempted * no_of_fights) if temp_tot_attempted > 0 and no_of_fights > 0 else 0
+    fighters_dict.get(fighter)["Opp. Strikes % Landed"] = (temp_tot_landed * no_of_fights) / (temp_tot_attempted * no_of_fights) if temp_tot_attempted > 0 and no_of_fights > 0 else 0
     
     current = fighters_dict.get(fighter)["Opp. Average Takedowns Attempted"]
     fighters_dict.get(fighter)["Opp. Average Takedowns Attempted"] = ((current * (no_of_fights - 1)) + int(opp_takedowns_attempted)) / no_of_fights if opp_takedowns_attempted.isnumeric() and no_of_fights > 0 else current

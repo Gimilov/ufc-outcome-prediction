@@ -7,7 +7,8 @@ import Timer
 base_url = "https://www.bestfightodds.com/search?query="
 
 # getting unique fighter names that we have
-ufc_data = pd.read_excel('UFCData_final.xlsx')
+file_to_merge = input('Please state the name of the .xlsx file you want to merge and use as a basis for the odds scraper: ')
+ufc_data = pd.read_excel(f'datasets/{file_to_merge}.xlsx')
 unique_R_names = ufc_data['R_Name'].unique() # the other side will be accounted as well
 timer = Timer.Timer()
 counter = 0
@@ -143,7 +144,8 @@ if second_prompt == 'Y':
                           'Event_Date'
                       ])    
     df = df.sort_values('Event_Name', ascending=True).reset_index(drop=True)
-    df.to_excel('ODDSdata.xlsx')
+    filename_write = input('Please state the name of the output .xlsx file: ')
+    df.to_excel(f'datasets/{filename_write}.xlsx')
 
 else:
     pass # just pass
@@ -153,7 +155,8 @@ if third_prompt == 'Y':
     if second_prompt == 'Y':
         pass # since we already have dataframe in df
     else:
-        df = pd.read_excel('ODDSdata.xlsx')
+        x = input('Please state the name of the .xlsx file you want to merge with odds data: ')
+        df = pd.read_excel(f'datasets/{x}.xlsx')
     pass
 
     ufc_data['Event_Date'] = pd.to_datetime(ufc_data['Event_Date'], format = '%B %d, %Y').dt.date
@@ -203,7 +206,8 @@ if third_prompt == 'Y':
                 ufc_data.at[index, 'B_Open_Odds'] = R_Name_cond2['1_Open_Odds'].iloc[0]
                 ufc_data.at[index, 'B_Closing_Odds'] = R_Name_cond2['1_Closed_Odds'].iloc[0]
             
-    ufc_data.to_excel('test_final.xlsx')
+    x = input('Please state the name of the output .xlsx file: ')
+    ufc_data.to_excel(f'datasets/{x}.xlsx')
     
 else:    
     pass

@@ -501,6 +501,6 @@ df['Underdog'] = underdog
 
 
 # saving to excel
-df.to_excel('UFCdata_final.xlsx')
+df.to_excel('datasets/UFC_fight_averages.xlsx')
 
     

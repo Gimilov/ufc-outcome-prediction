@@ -313,37 +313,37 @@ def update_fighters(fighter: str, colour: str, fighters_dict: dict, fighter_soup
     fighters_dict.get(fighter)["Total Significant Strikes on Head Landed"] += int(heads_landed) if heads_landed.isnumeric() else 0
     temp_head_landed = fighters_dict.get(fighter).get("Total Significant Strikes on Head Landed")
     temp_head_attempted = fighters_dict.get(fighter).get("Total Significant Strikes on Head Attempted")
-    fighters_dict.get(fighter)["Total Significant Strikes on Body % Landed"] = temp_head_landed / temp_head_attempted if temp_head_attempted > 0 else 0
+    fighters_dict.get(fighter)["Significant Strikes on Head % Landed"] = temp_head_landed / temp_head_attempted if temp_head_attempted > 0 else 0
     
     fighters_dict.get(fighter)["Total Significant Strikes on Body Attempted"] += int(body_attempted) if body_attempted.isnumeric() else 0
     fighters_dict.get(fighter)["Total Significant Strikes on Body Landed"] += int(body_landed) if body_landed.isnumeric() else 0
     temp_body_landed = fighters_dict.get(fighter).get("Total Significant Strikes on Body Landed")
     temp_body_attempted = fighters_dict.get(fighter).get("Total Significant Strikes on Body Attempted")
-    fighters_dict.get(fighter)["Total Significant Strikes on Body % Landed"] = temp_body_landed / temp_body_attempted if temp_body_attempted > 0 else 0
+    fighters_dict.get(fighter)["Significant Strikes on Body % Landed"] = temp_body_landed / temp_body_attempted if temp_body_attempted > 0 else 0
     
     fighters_dict.get(fighter)["Total Significant Strikes on Leg Attempted"] += int(leg_attempted) if leg_attempted.isnumeric() else 0
     fighters_dict.get(fighter)["Total Significant Strikes on Leg Landed"] += int(leg_landed) if leg_landed.isnumeric() else 0
     temp_leg_landed = fighters_dict.get(fighter).get("Total Significant Strikes on Leg Landed")
     temp_leg_attempted = fighters_dict.get(fighter).get("Total Significant Strikes on Leg Attempted")
-    fighters_dict.get(fighter)["Total Significant Strikes on Leg % Landed"] = temp_leg_landed / temp_leg_attempted if temp_leg_attempted > 0 else 0
+    fighters_dict.get(fighter)["Significant Strikes on Leg % Landed"] = temp_leg_landed / temp_leg_attempted if temp_leg_attempted > 0 else 0
     
     fighters_dict.get(fighter)["Total Significant Strikes at Distance Attempted"] += int(distance_attempted) if distance_attempted.isnumeric() else 0
     fighters_dict.get(fighter)["Total Significant Strikes at Distance Landed"] += int(distance_landed) if distance_landed.isnumeric() else 0
     temp_dist_landed = fighters_dict.get(fighter).get("Total Significant Strikes at Distance Landed")
     temp_dist_attempted = fighters_dict.get(fighter).get("Total Significant Strikes at Distance Attempted")
-    fighters_dict.get(fighter)["Total Significant Strikes at Distance % Landed"] = temp_dist_landed / temp_dist_attempted if temp_dist_attempted > 0 else 0
+    fighters_dict.get(fighter)["Significant Strikes at Distance % Landed"] = temp_dist_landed / temp_dist_attempted if temp_dist_attempted > 0 else 0
     
     fighters_dict.get(fighter)["Total Significant Strikes in Clinch Attempted"] += int(clinch_attempted) if clinch_attempted.isnumeric() else 0
     fighters_dict.get(fighter)["Total Significant Strikes in Clinch Landed"] += int(clinch_landed) if clinch_landed.isnumeric() else 0
     temp_clinch_landed = fighters_dict.get(fighter).get("Total Significant Strikes in Clinch Landed")
     temp_clinch_attempted = fighters_dict.get(fighter).get("Total Significant Strikes in Clinch Attempted")
-    fighters_dict.get(fighter)["Total Significant Strikes in Clinch % Landed"] = temp_clinch_landed / temp_clinch_attempted if temp_clinch_attempted > 0 else 0
+    fighters_dict.get(fighter)["Significant Strikes in Clinch % Landed"] = temp_clinch_landed / temp_clinch_attempted if temp_clinch_attempted > 0 else 0
     
     fighters_dict.get(fighter)["Total Significant Strikes on Ground Attempted"] += int(ground_attempted) if ground_attempted.isnumeric() else 0
     fighters_dict.get(fighter)["Total Significant Strikes on Ground Landed"] += int(ground_landed) if ground_landed.isnumeric() else 0
     temp_ground_landed = fighters_dict.get(fighter).get("Total Significant Strikes on Ground Landed")
     temp_ground_attempted = fighters_dict.get(fighter).get("Total Significant Strikes on Ground Attempted")
-    fighters_dict.get(fighter)["Total Significant Strikes on Ground % Landed"] = temp_ground_landed / temp_ground_attempted if temp_ground_attempted > 0 else 0
+    fighters_dict.get(fighter)["Significant Strikes on Ground % Landed"] = temp_ground_landed / temp_ground_attempted if temp_ground_attempted > 0 else 0
     
     current = fighters_dict.get(fighter)["Average knockdowns"]
     fighters_dict.get(fighter)["Average knockdowns"] = ((current * (no_of_fights - 1)) + int(knockdowns)) / no_of_fights if knockdowns.isnumeric() and no_of_fights > 0 else current
@@ -475,7 +475,7 @@ def update_fighters(fighter: str, colour: str, fighters_dict: dict, fighter_soup
     
     temp_head_landed = fighters_dict.get(fighter).get("Opp. Average Significant Strikes on Head Landed")
     temp_head_attempted = fighters_dict.get(fighter).get("Opp. Average Significant Strikes on Head Attempted")
-    fighters_dict.get(fighter)["Opp. Significant Strikes on Body % Landed"] = (temp_head_landed * no_of_fights) / (temp_head_attempted * no_of_fights) if temp_head_attempted > 0 and no_of_fights > 0 else 0 
+    fighters_dict.get(fighter)["Opp. Significant Strikes on Head % Landed"] = (temp_head_landed * no_of_fights) / (temp_head_attempted * no_of_fights) if temp_head_attempted > 0 and no_of_fights > 0 else 0 
     
     current = fighters_dict.get(fighter)["Opp. Average Significant Strikes on Body Attempted"]
     fighters_dict.get(fighter)["Opp. Average Significant Strikes on Body Attempted"] = ((current * (no_of_fights - 1)) + int(opp_body_attempted)) / no_of_fights if opp_body_attempted.isnumeric() and no_of_fights > 0 else current
@@ -515,7 +515,7 @@ def update_fighters(fighter: str, colour: str, fighters_dict: dict, fighter_soup
     
     temp_clinch_landed = fighters_dict.get(fighter).get("Opp. Average Significant Strikes in Clinch Landed")
     temp_clinch_attempted = fighters_dict.get(fighter).get("Opp. Average Significant Strikes in Clinch Attempted")
-    fighters_dict.get(fighter)["Opp. Average Significant Strikes in Clinch % Landed"] = (temp_clinch_landed * no_of_fights) / (temp_clinch_attempted * no_of_fights) if temp_clinch_attempted > 0 and no_of_fights > 0 else 0 
+    fighters_dict.get(fighter)["Opp. Significant Strikes in Clinch % Landed"] = (temp_clinch_landed * no_of_fights) / (temp_clinch_attempted * no_of_fights) if temp_clinch_attempted > 0 and no_of_fights > 0 else 0 
     
     current = fighters_dict.get(fighter)["Opp. Average Significant Strikes on Ground Attempted"]
     fighters_dict.get(fighter)["Opp. Average Significant Strikes on Ground Attempted"] = ((current * (no_of_fights - 1)) + int(opp_ground_attempted)) / no_of_fights if opp_ground_attempted.isnumeric() and no_of_fights > 0 else current
@@ -528,7 +528,7 @@ def update_fighters(fighter: str, colour: str, fighters_dict: dict, fighter_soup
     fighters_dict.get(fighter)["Opp. Significant Strikes on Ground % Landed"] = (temp_ground_landed * no_of_fights) / (temp_ground_attempted * no_of_fights) if temp_ground_attempted > 0 and no_of_fights > 0 else 0 
     
     
-def save_to_excel(final_data_arr: list) -> pd.DataFrame:
+def save_to_df(final_data_arr: list) -> pd.DataFrame:
     df = pd.DataFrame(final_data_arr,
                   columns = [
                       # event parsing

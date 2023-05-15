@@ -1,2 +1,2 @@
 # ufc-outcome-prediction
-Silly data science project at Aarhus University. Includes some scrapers and model-development steps in Jupyter.
+Data science project at Aarhus University. Includes some Python scrapers and model development in Jupyter Notebook that I have made during the process.
